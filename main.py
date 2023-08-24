@@ -59,7 +59,7 @@ async def pair_teams(
     # Server doesn't have a Scheduling category, abort.
     if not scheduling_category:
         await interaction.response.send_message(
-            "Your Discord is not setup, run **/setup** first.", ephemeral=True
+            "Your Discord is not set up. Run **/setup** first.", ephemeral=True
         )
         return
 
