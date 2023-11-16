@@ -1,1 +1,2 @@
 discord.py==2.3.2
+pytest==7.4.3
