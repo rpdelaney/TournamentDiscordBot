@@ -28,6 +28,7 @@ async def on_ready():
 )
 @app_commands.default_permissions(administrator=True)
 async def setup(interaction: discord.Interaction):
+    """Prepare the Discord server by creating the required categories."""
     scheduling = await functions.setup_category(interaction, "Scheduling")
     archived = await functions.setup_category(interaction, "Archived Matches")
     staff = await functions.create_staff_role(interaction)
@@ -52,6 +53,11 @@ async def setup(interaction: discord.Interaction):
 async def pair_teams(
     interaction: discord.Interaction, team1: discord.Role, team2: discord.Role
 ):
+    """
+    Handle a discord command to create a scheduling channel for two teams
+    by creating a private channel for the mentioned roles. Also, add the
+    Staff group to the channel.
+    """
     scheduling_category = discord.utils.get(
         interaction.guild.categories, name="Scheduling"
     )

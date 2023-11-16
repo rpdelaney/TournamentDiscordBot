@@ -4,6 +4,7 @@ import discord
 async def setup_category(
     interaction: discord.Interaction, new_category: str
 ) -> dict:
+    """Idempotently create the category for scheduling channels."""
     try:
         for category in interaction.guild.categories:
             if category.name == new_category:
@@ -26,6 +27,7 @@ async def setup_category(
 
 
 def count_match_channels(interaction: discord.Interaction) -> int:
+    """Return a count of channels in the server that start with 'match-'."""
     channel_count = 0
     for channel in interaction.guild.channels:
         if channel.name.startswith("match-"):
@@ -35,6 +37,7 @@ def count_match_channels(interaction: discord.Interaction) -> int:
 
 
 async def create_staff_role(interaction: discord.Interaction) -> dict:
+    """Idempotently create the Staff role."""
     staff_role = discord.utils.get(
         interaction.guild.roles, name="Tournament Staff"
     )
