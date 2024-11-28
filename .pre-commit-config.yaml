@@ -35,26 +35,25 @@ repos:
       - id: pyupgrade
         args: [--py311-plus]
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        args: [--profile=black]
-
-  - repo: https://github.com/psf/black
-    rev: 24.10.0
-    hooks:
-      - id: black
-        args: [--line-length=79]
-
 # - repo: https://github.com/pre-commit/mirrors-mypy
 #   rev: v1.5.1
 #   hooks:
 #     - id: mypy
 #       args: [--ignore-missing-imports]
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.1.1
+  - repo: local
     hooks:
-      - id: flake8
-        args: [--max-line-length=79, --extend-ignore=E203]
+
+      - id: ruff format
+        name: ruff format
+        language: system
+        entry: ruff format
+        types: [python]
+        pass_filenames: true
+
+      - id: ruff check
+        name: ruff check
+        language: system
+        entry: ruff check --fix
+        types: [python]
+        pass_filenames: true
