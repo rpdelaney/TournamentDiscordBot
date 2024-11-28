@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
 @bot.event
-async def on_ready():
+async def on_ready() -> None:
     print(f"Logged in as {bot.user}!")
     try:
         # Sync Application Commands
@@ -26,7 +26,7 @@ async def on_ready():
     name="setup", description="Creates categories and Tournament Staff role."
 )
 @app_commands.default_permissions(administrator=True)
-async def setup(interaction: discord.Interaction):
+async def setup(interaction: discord.Interaction) -> None:
     """Prepare the Discord server by creating the required categories."""
     scheduling = await functions.setup_category(interaction, "Scheduling")
     archived = await functions.setup_category(interaction, "Archived Matches")
@@ -51,7 +51,7 @@ async def setup(interaction: discord.Interaction):
 @app_commands.default_permissions(manage_channels=True)
 async def pair_teams(
     interaction: discord.Interaction, team1: discord.Role, team2: discord.Role
-):
+) -> None:
     """
     Handle a discord command to create a scheduling channel for two teams
     by creating a private channel for the mentioned roles. Also, add the
