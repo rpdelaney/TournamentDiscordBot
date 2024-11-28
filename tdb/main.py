@@ -6,6 +6,7 @@ from discord import app_commands
 from discord.ext import commands
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
@@ -52,8 +53,7 @@ async def setup(interaction: discord.Interaction) -> None:
 async def pair_teams(
     interaction: discord.Interaction, team1: discord.Role, team2: discord.Role
 ) -> None:
-    """
-    Handle a discord command to create a scheduling channel for two teams
+    """Handle a discord command to create a scheduling channel for two teams
     by creating a private channel for the mentioned roles. Also, add the
     Staff group to the channel.
     """
