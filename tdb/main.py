@@ -14,6 +14,7 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.event
 async def on_ready() -> None:
+    """Handle the on_ready event."""
     print(f"Logged in as {bot.user}!")
     try:
         # Sync Application Commands
@@ -53,9 +54,10 @@ async def setup(interaction: discord.Interaction) -> None:
 async def pair_teams(
     interaction: discord.Interaction, team1: discord.Role, team2: discord.Role
 ) -> None:
-    """Handle a discord command to create a scheduling channel for two teams
-    by creating a private channel for the mentioned roles. Also, add the
-    Staff group to the channel.
+    """Handle a discord command to create a scheduling channel.
+
+    Create channel for the mentioned roles. Also, add the Staff group to
+    the channel.
     """
     scheduling_category = discord.utils.get(
         interaction.guild.categories, name="Scheduling"
