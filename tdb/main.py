@@ -18,7 +18,7 @@ async def on_ready() -> None:
         # Sync Application Commands
         synced = await bot.tree.sync()
         print(f"Synced {len(synced)} command(s)")
-    except Exception as Error:
+    except Exception as Error:  # noqa: BLE001
         print(Error)
 
 
