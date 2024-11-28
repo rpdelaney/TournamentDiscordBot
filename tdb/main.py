@@ -100,4 +100,4 @@ async def pair_teams(
     )
 
 
-bot.run(os.getenv("DISCORD_BOT_TOKEN"))
+bot.run(os.getenv("DISCORD_TOKEN"))
