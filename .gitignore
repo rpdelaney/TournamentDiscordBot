@@ -1,3 +1,5 @@
+.env        # We have secrets in here :(
+
 .envrc.local
 
 # Byte-compiled / optimized / DLL files
