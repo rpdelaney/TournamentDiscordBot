@@ -14,15 +14,15 @@ async def setup_category(
                 }
 
         await interaction.guild.create_category(new_category)
-        return {
-            "success": True,
-            "message": f'Category "**{new_category}**" created.',
-        }
-
-    except Exception as Error:
+    except Exception as Error:  # noqa: BLE001
         return {
             "success": False,
             "message": f'Failed to create "**{new_category}**": {Error}',
+        }
+    else:
+        return {
+            "success": True,
+            "message": f'Category "**{new_category}**" created.',
         }
 
 
@@ -62,18 +62,18 @@ async def create_staff_role(interaction: discord.Interaction) -> dict:
         await interaction.guild.create_role(
             name="Tournament Staff", permissions=permissions
         )
-        return {
-            "success": True,
-            "message": 'Role "**Tournament Staff**" created successfully.',
-        }
-
     except discord.Forbidden:
         return {
             "success": False,
             "message": 'Error: Missing perms to create "**Staff**" role.',
         }
-    except Exception as Error:
+    except Exception as Error:  # noqa: BLE001
         return {
             "success": False,
             "message": f'Error creating "**Tournament Staff**" role: {Error}',
+        }
+    else:
+        return {
+            "success": True,
+            "message": 'Role "**Tournament Staff**" created successfully.',
         }
