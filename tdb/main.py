@@ -100,4 +100,30 @@ async def pair_teams(
     )
 
 
-bot.run(os.getenv("DISCORD_TOKEN"))
+try:
+    bot.run(os.getenv("DISCORD_TOKEN"))
+except discord.errors.PrivilegedIntentsRequired:
+    perms = discord.Permissions()
+    perms.update(
+        manage_channels=True,
+        manage_roles=True,
+        mention_everyone=True,
+        read_messages=True,
+        send_messages=True,
+    )
+
+    oauth_url = discord.utils.oauth_url(
+        client_id=os.getenv("APP_ID"),
+        permissions=perms,
+    )
+
+    print("FATAL ERROR")
+    print(
+        "Privileged intents have not been explicitly enabled in the developer "
+        "portal."
+    )
+    print(
+        "Use the following oauth URL to add the bot with the correct "
+        "intents:"
+    )
+    print(oauth_url)
